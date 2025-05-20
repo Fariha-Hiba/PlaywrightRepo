@@ -25,11 +25,12 @@ test('Links and Products Test', async ({ page }) => {
 test('Links Test', async ({page}) => {
     await page.goto('https://www.demoblaze.com/index.html')
 
-    const products = console.log(await page.$$('a'))
+   const products = await page.$$('a'); // Get all anchor elements
 
-    for(product in products) {
-        console.log(product)
-    }
+for (const product of products) {
+    const text = await product.textContent();
+    console.log(text); // Logs clean readable link text
+}
     await page.close()
     
 })
